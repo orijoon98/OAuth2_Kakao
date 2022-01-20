@@ -11,6 +11,7 @@ public class AuthService {
     private final KakaoService kakaoService;
 
     public void oauth2AuthorizationKakao(String code) {
+        System.out.println(code);
         KakaoDto authorization = kakaoService.callTokenApi(code);
         String userInfoFromKakao = kakaoService.getUserInfoByAccessToken(authorization.getAccessToken());
         System.out.println(userInfoFromKakao);

@@ -23,22 +23,22 @@ public class KakaoService {
     private final ObjectMapper objectMapper;
 
     @Value("${kakao.client-id}")
-    private final String kakaoClientId;
+    private String kakaoClientId;
 
     @Value("${kakao.redirect-uri}")
-    private final String kakaoRedirectUrl;
+    private String kakaoRedirectUrl;
 
     @Value("${kakao.authorization-grant-type}")
-    private final String kakaoGrantType;
+    private String kakaoGrantType;
 
     @Value("${kakao.client-secret}")
-    private final String kakaoClientSecret;
+    private String kakaoClientSecret;
 
     @Value("${kakao.token-uri}")
-    private final String kakaoTokenUri;
+    private String kakaoTokenUri;
 
     @Value("${kakao.user-info-uri}")
-    private final String kakaoUserInfoUri;
+    private String kakaoUserInfoUri;
 
     public KakaoDto callTokenApi(String code) {
 
