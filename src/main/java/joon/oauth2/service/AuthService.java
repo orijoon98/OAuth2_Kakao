@@ -13,7 +13,7 @@ public class AuthService {
     public void oauth2AuthorizationKakao(String code) {
         System.out.println(code);
         KakaoDto authorization = kakaoService.callTokenApi(code);
-        String userInfoFromKakao = kakaoService.getUserInfoByAccessToken(authorization.getAccessToken());
+        String userInfoFromKakao = kakaoService.getUserInfoByAccessToken(authorization.getAccess_token());
         System.out.println(userInfoFromKakao);
     }
 }

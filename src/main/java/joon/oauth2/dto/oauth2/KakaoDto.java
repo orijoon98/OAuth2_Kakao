@@ -5,10 +5,10 @@ import lombok.Getter;
 @Getter
 public class KakaoDto {
 
-    private String accessToken;
-    private String tokenType;
-    private String refreshToken;
-    private String expiresIn;
+    private String token_type;
+    private String access_token;
+    private String expires_in;
+    private String refresh_token;
+    private String refresh_token_expires_in;
     private String scope;
-    private String refreshTokenExpiresIn;
 }
