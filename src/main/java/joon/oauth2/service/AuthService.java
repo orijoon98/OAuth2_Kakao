@@ -10,8 +10,7 @@ public class AuthService {
 
     private final KakaoService kakaoService;
 
-    public void oauth2AuthorizationKakao(String code) {
-        System.out.println(code);
+    public void oauth2Login(String code) {
         KakaoDto authorization = kakaoService.callTokenApi(code);
         String userInfoFromKakao = kakaoService.getUserInfoByAccessToken(authorization.getAccess_token());
         System.out.println(userInfoFromKakao);
