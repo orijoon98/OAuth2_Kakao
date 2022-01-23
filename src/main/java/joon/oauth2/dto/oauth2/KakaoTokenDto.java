@@ -3,7 +3,7 @@ package joon.oauth2.dto.oauth2;
 import lombok.Getter;
 
 @Getter
-public class KakaoDto {
+public class KakaoTokenDto {
 
     private String token_type;
     private String access_token;

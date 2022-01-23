@@ -42,6 +42,9 @@ dependencies {
 	//oauth2
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
+	//gson
+	implementation 'com.google.code.gson:gson:2.8.9'
+
 	//lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

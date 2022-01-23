@@ -2,7 +2,7 @@ package joon.oauth2.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import joon.oauth2.dto.oauth2.KakaoDto;
+import joon.oauth2.dto.oauth2.KakaoTokenDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -40,7 +40,7 @@ public class KakaoService {
     @Value("${kakao.user-info-uri}")
     private String kakaoUserInfoUri;
 
-    public KakaoDto callTokenApi(String code) {
+    public KakaoTokenDto callTokenApi(String code) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -57,7 +57,7 @@ public class KakaoService {
         try {
             ResponseEntity<String> response = restTemplate.postForEntity(kakaoTokenUri, request, String.class);
 
-            KakaoDto authorization = objectMapper.readValue(response.getBody(), KakaoDto.class);
+            KakaoTokenDto authorization = objectMapper.readValue(response.getBody(), KakaoTokenDto.class);
 
             return authorization;
         } catch (RestClientException | JsonProcessingException ex) {
