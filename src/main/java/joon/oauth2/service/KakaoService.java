@@ -3,7 +3,10 @@ package joon.oauth2.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import joon.oauth2.dto.oauth2.KakaoTokenDto;
+import joon.oauth2.exception.KakaoCodeException;
+import joon.oauth2.exception.KakaoTokenException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class KakaoService {
 
     private final RestTemplate restTemplate;
@@ -61,9 +65,9 @@ public class KakaoService {
 
             return authorization;
         } catch (RestClientException | JsonProcessingException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
 
-            throw new Error();
+            throw new KakaoCodeException();
         }
     }
 
@@ -80,10 +84,10 @@ public class KakaoService {
             ResponseEntity<String> response = restTemplate.postForEntity(kakaoUserInfoUri, request, String.class);
 
             return response.getBody();
-        }catch (RestClientException ex) {
-            ex.printStackTrace();
+        } catch (RestClientException ex) {
+            log.error(ex.getMessage());
 
-            throw new Error();
+            throw new KakaoTokenException();
         }
     }
 }
