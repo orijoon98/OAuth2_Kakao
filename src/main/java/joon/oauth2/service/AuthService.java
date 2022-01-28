@@ -66,12 +66,18 @@ public class AuthService {
         JsonObject kakaoAccount = new Gson().fromJson(userInfo.get("kakao_account"), JsonObject.class);
 
         String nickname = properties.get("nickname").toString();
-        String profileImage = properties.get("profile_image").toString();
         String email = kakaoAccount.get("email").toString();
 
         nickname = nickname.substring(1, nickname.length() - 1);
-        profileImage = profileImage.substring(1, profileImage.length() - 1);
         email = email.substring(1, email.length() - 1);
+
+        String profileImage;
+        if(properties.get("profile_image") != null) {
+            profileImage = properties.get("profile_image").toString();
+            profileImage = profileImage.substring(1, profileImage.length() - 1);
+        } else {
+            profileImage = null;
+        }
 
         Optional<User> user = userRepository.findByEmail(email);
 
